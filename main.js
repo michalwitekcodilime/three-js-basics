@@ -1,7 +1,7 @@
 import './style.css'
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import Stats from 'three/examples/jsm/libs/stats.module'
+import Stats from 'three/examples/jsm/libs/stats.module';
 import dat from 'dat.gui';
 
 const world = {
@@ -16,6 +16,10 @@ const world = {
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 
+const light = new THREE.DirectionalLight('#FFFFFF', 1);
+light.position.set(0, 1, 1);
+scene.add(light)
+
 camera.position.set(1, 1, 10)
 
 const renderer = new THREE.WebGLRenderer();
@@ -28,10 +32,16 @@ const axesHelper = new THREE.AxesHelper(10);
 scene.add(axesHelper);
 
 const geometry = new THREE.BoxGeometry(world.box.width, world.box.height, world.box.depth);
-const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+// const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+// const material = new THREE.MeshNormalMaterial();
+const material = new THREE.MeshPhongMaterial({color: 0x00ff00});
 const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
 
+// cube.position.set(2,2,2);
+cube.rotation.set(2,2,2);
+
+scene.add(cube);
+console.log(scene);
 
 // renderer.render(scene, camera);
 
