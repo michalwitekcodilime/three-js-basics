@@ -27,6 +27,7 @@ renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.addEventListener('change', () => console.log('controls->event', camera.position));
 
 const axesHelper = new THREE.AxesHelper(10);
 scene.add(axesHelper);
