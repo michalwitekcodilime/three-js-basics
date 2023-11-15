@@ -17,3 +17,4 @@ Example with controls, light, and animation
 
 Example 02 extended with basic devtools like stats and gui.
 
+### Example 04
